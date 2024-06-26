@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_add"
+    app:startDestination="@id/createFragment">
+
+    <fragment
+        android:id="@+id/createFragment"
+        android:name="com.longnp.lnsocial.presentation.main.create.record.CreateFragment"
+        android:label="PreviewVideoFragment"
+        tools:layout="@layout/fragment_create">
+        <action
+            android:id="@+id/action_createFragment_to_selectMediaFragment"
+            app:destination="@id/selectMediaFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+        <action
+            android:id="@+id/action_createFragment_to_previewVideoFragment"
+            app:destination="@id/previewVideoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectMediaFragment"
+        android:name="com.longnp.lnsocial.presentation.main.create.select.SelectMediaFragment"
+        android:label="fragment_select_media"
+        tools:layout="@layout/fragment_select_media">
+        <action
+            android:id="@+id/action_selectMediaFragment_to_previewVideoFragment"
+            app:destination="@id/previewVideoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/previewVideoFragment"
+        android:name="com.longnp.lnsocial.presentation.main.create.preview.PreviewVideoFragment"
+        android:label="fragment_preview_video"
+        tools:layout="@layout/fragment_preview_video">
+        <argument
+            android:name="localVideo"
+            app:argType="com.longnp.lnsocial.business.datasource.local.media.LocalVideo" />
+        <action
+            android:id="@+id/action_previewVideoFragment_to_postVideoFragment"
+            app:destination="@id/postVideoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postVideoFragment"
+        android:name="com.longnp.lnsocial.presentation.main.create.post.PostVideoFragment"
+        android:label="fragment_post_video"
+        tools:layout="@layout/fragment_post_video">
+        <argument
+            android:name="localVideo"
+            app:argType="com.longnp.lnsocial.business.datasource.local.media.LocalVideo" />
+    </fragment>
+
+</navigation>

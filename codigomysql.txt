@@ -1,0 +1,83 @@
+CREATE TABLE Profiles (
+    pk VARCHAR(255) PRIMARY KEY,
+    accessToken VARCHAR(255) NOT NULL,
+    nickName VARCHAR(255) NOT NULL,
+    description TEXT,
+    avatarLink VARCHAR(255),
+    numberFollowers INT DEFAULT 0,
+    numberFollowing INT DEFAULT 0,
+    numberLike INT DEFAULT 0,
+    cared VARCHAR(255),
+    caredRecommend VARCHAR(255)
+);
+
+CREATE TABLE Followers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    profileId VARCHAR(255),
+    followerId VARCHAR(255),
+    FOREIGN KEY (profileId) REFERENCES Profiles(pk),
+    FOREIGN KEY (followerId) REFERENCES Profiles(pk)
+);
+
+CREATE TABLE Videos (
+    pk VARCHAR(255) PRIMARY KEY,
+    videoLink VARCHAR(255) NOT NULL,
+    hashTagVideo VARCHAR(255),
+    soundId VARCHAR(255),
+    soundTitle VARCHAR(255),
+    soundThumbnail VARCHAR(255),
+    authProfileId VARCHAR(255),
+    numberLike INT DEFAULT 0,
+    numberComments INT DEFAULT 0,
+    numberShared INT DEFAULT 0,
+    description TEXT,
+    typesVideos VARCHAR(255),
+    nickName VARCHAR(255),
+    avatarLink VARCHAR(255),
+    thumbnail VARCHAR(255),
+    FOREIGN KEY (authProfileId) REFERENCES Profiles(pk)
+);
+
+CREATE TABLE Comments (
+    id VARCHAR(255) PRIMARY KEY,
+    videoId VARCHAR(255),
+    numberLike INT DEFAULT 0,
+    nameUser VARCHAR(255),
+    avatarLink VARCHAR(255),
+    comment TEXT,
+    order INT,
+    FOREIGN KEY (videoId) REFERENCES Videos(pk)
+);
+
+CREATE TABLE Messages (
+    id VARCHAR(255) PRIMARY KEY,
+    value TEXT,
+    date INT,
+    type INT,
+    ava VARCHAR(255)
+);
+
+CREATE TABLE Inbox (
+    id VARCHAR(255) PRIMARY KEY,
+    idAuth VARCHAR(255),
+    idReceiver VARCHAR(255),
+    nameReceiver VARCHAR(255),
+    avaReceiver VARCHAR(255),
+    FOREIGN KEY (idAuth) REFERENCES Profiles(pk),
+    FOREIGN KEY (idReceiver) REFERENCES Profiles(pk)
+);
+
+CREATE TABLE AuthTokens (
+    accountPk VARCHAR(255),
+    token VARCHAR(255),
+    authProfileId VARCHAR(255),
+    PRIMARY KEY (accountPk, token),
+    FOREIGN KEY (accountPk) REFERENCES Profiles(pk),
+    FOREIGN KEY (authProfileId) REFERENCES Profiles(pk)
+);
+
+CREATE TABLE Accounts (
+    pk VARCHAR(255) PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    scope VARCHAR(255)
+);

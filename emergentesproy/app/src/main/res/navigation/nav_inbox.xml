@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_inbox"
+    app:startDestination="@id/inboxFragment">
+
+    <fragment
+        android:id="@+id/inboxFragment"
+        android:name="com.longnp.lnsocial.presentation.main.inbox.InboxFragment"
+        android:label=""
+        tools:layout="@layout/fragment_inbox">
+        <action
+            android:id="@+id/action_inboxFragment_to_addFriendFragment"
+            app:destination="@id/addFriendFragment"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+        <action
+            android:id="@+id/action_inboxFragment_to_inboxMessageFragment2"
+            app:destination="@id/inboxMessageFragment2"
+            app:enterAnim="@anim/slide_from_right"
+            app:exitAnim="@anim/slide_to_left"
+            app:popEnterAnim="@anim/slide_from_left"
+            app:popExitAnim="@anim/slide_to_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addFriendFragment"
+        android:name="com.longnp.lnsocial.presentation.main.inbox.addfriend.AddFriendFragment"
+        android:label="fragment_add_friend"
+        tools:layout="@layout/fragment_add_friend" />
+
+    <fragment
+        android:id="@+id/inboxMessageFragment2"
+        android:name="com.longnp.lnsocial.presentation.main.inbox.message.InboxMessageFragment"
+        android:label="InboxMessageFragment"
+        tools:layout="@layout/fragment_inbox_message">
+        <argument
+            android:name="model"
+            app:argType="com.longnp.lnsocial.business.domain.models.inbox.InboxModel" />
+    </fragment>
+
+</navigation>
