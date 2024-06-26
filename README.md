@@ -11,6 +11,7 @@ Instalación y ejecución
 Aplicación Android
 Importar el proyecto:
 Abre Android Studio.
+
 Selecciona "Import Project" y busca la carpeta donde se encuentra el proyecto de Android.
 Sincronizar Gradle:
 Una vez importado el proyecto, Android Studio debería solicitarte sincronizar Gradle automáticamente. Si no es así, ve a File > Sync Project with Gradle Files.
